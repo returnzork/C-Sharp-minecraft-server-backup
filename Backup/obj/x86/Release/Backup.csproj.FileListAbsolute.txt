@@ -1,0 +1,9 @@
+L:\Backup\Backup\bin\Release\Backup.exe
+L:\Backup\Backup\bin\Release\Backup.pdb
+L:\Backup\Backup\obj\x86\Release\ResolveAssemblyReference.cache
+L:\Backup\Backup\obj\x86\Release\Backup.Form1.resources
+L:\Backup\Backup\obj\x86\Release\Backup.Properties.Resources.resources
+L:\Backup\Backup\obj\x86\Release\GenerateResource.read.1.tlog
+L:\Backup\Backup\obj\x86\Release\GenerateResource.write.1.tlog
+L:\Backup\Backup\obj\x86\Release\Backup.exe
+L:\Backup\Backup\obj\x86\Release\Backup.pdb
