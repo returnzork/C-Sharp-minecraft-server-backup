@@ -7,3 +7,12 @@ L:\Backup\Backup\obj\x86\Debug\Backup.exe
 L:\Backup\Backup\obj\x86\Debug\Backup.pdb
 L:\Backup\Backup\bin\Debug\Backup.exe
 L:\Backup\Backup\bin\Debug\Backup.pdb
+C:\Users\Kevin\C-Sharp-minecraft-server-backup\Backup\obj\x86\Debug\Backup.exe
+C:\Users\Kevin\C-Sharp-minecraft-server-backup\Backup\obj\x86\Debug\Backup.pdb
+C:\Users\Kevin\C-Sharp-minecraft-server-backup\Backup\bin\Debug\Backup.exe
+C:\Users\Kevin\C-Sharp-minecraft-server-backup\Backup\bin\Debug\Backup.pdb
+C:\Users\Kevin\C-Sharp-minecraft-server-backup\Backup\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Kevin\C-Sharp-minecraft-server-backup\Backup\obj\x86\Debug\Backup.Form1.resources
+C:\Users\Kevin\C-Sharp-minecraft-server-backup\Backup\obj\x86\Debug\Backup.Properties.Resources.resources
+C:\Users\Kevin\C-Sharp-minecraft-server-backup\Backup\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\Kevin\C-Sharp-minecraft-server-backup\Backup\obj\x86\Debug\GenerateResource.write.1.tlog

@@ -22,15 +22,19 @@ namespace Backup
 
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
-
-
-
-
-
+            
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
+
+            if (System.IO.File.Exists("last.txt"))
+            {
+                System.IO.StreamReader objReader;
+                objReader = new System.IO.StreamReader("last.txt");
+                textBox2.Text = objReader.ReadToEnd();
+                objReader.Close();
+            }
 
         }
 
@@ -52,10 +56,18 @@ namespace Backup
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
 
+            Thread.Sleep(50);
             textBox1.Text = "Forcing server to save-all, then backing up";
             Thread.Sleep(50);
-            System.Diagnostics.Process.Start(@"save-all.vbs");
-            Thread.Sleep(5000);
+
+            if (System.IO.File.Exists("save-all.vbs"))
+            {
+                System.Diagnostics.Process.Start(@"save-all.vbs");
+                Thread.Sleep(5000);
+            }
+
+            File.WriteAllText("last.txt", textBox2.Text);
+
             var drivepath = textBox2.Text;
 
             var date1 = string.Format("{0:MM-dd-yyyy@hh-mm tt}", DateTime.Now);
