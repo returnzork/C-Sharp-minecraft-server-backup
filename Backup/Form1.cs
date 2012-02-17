@@ -1,4 +1,6 @@
-﻿/*Version 1.5
+﻿/*Version 1.5.1
+ * 
+ * fixed compression to the on launch copy
  * 
  * github.com/returnzork
  * 
@@ -86,6 +88,11 @@ namespace Backup
             {
                 string[] files = Directory.GetFiles(@date1);   // add all those files to the ProjectX folder in the zip file
                 zip.AddFiles(files);
+
+                zip.AddDirectory(@date1 + "\\players");
+                zip.AddDirectory(@date1 + "\\data");
+                zip.AddDirectory(@date1 + "\\region");
+
                 zip.Comment = "This zip was created at " + System.DateTime.Now.ToString("G");
                 zip.Save(date1 + ".zip");
             }
