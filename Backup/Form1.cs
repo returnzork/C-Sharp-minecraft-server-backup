@@ -57,48 +57,51 @@ namespace Backup
         {
 
             Thread.Sleep(50);
-            textBox1.Text = "Forcing server to save-all, then backing up";
-            Thread.Sleep(50);
 
             if (System.IO.File.Exists("save-all.vbs"))
             {
+                textBox1.Text = "Forving server to save-all, then backing up";
+                Thread.Sleep(50);
                 System.Diagnostics.Process.Start(@"save-all.vbs");
                 Thread.Sleep(5000);
             }
 
-            File.WriteAllText("last.txt", textBox2.Text);
+            File.WriteAllText("last.txt", textBox2.Text);                     //writes the directory to save to a file (names last.txt)
 
             var drivepath = textBox2.Text;
 
             var date1 = string.Format("{0:MM-dd-yyyy@hh-mm tt}", DateTime.Now);
-            System.IO.Directory.CreateDirectory(date1);
+            System.IO.Directory.CreateDirectory(date1);                      //creates the directory
 
-            FileSystem.CopyDirectory(drivepath, date1 + "\\");
+            FileSystem.CopyDirectory(drivepath, date1 + "\\");               //copy the directory to the newly created one
 
-            
 
             int loop = 6;
             
             while (loop >= 5)
             {
-
                 
-
-
-                string test;
-                test = "20";
-                int testa = Convert.ToInt32(test);
+                //string test;                        //old legacy way that
+                //test = "20";                        //will work if the new way doesn't.
+                //int testa = Convert.ToInt32(test);  
+                int testa = 20;                       //new initialize code, will test later
                 int progress = 0;
 
 
-                while (testa > 0)
+                while (testa > 0)                     //loop code for timer
                 {
                     textBox1.Text = testa + " minutes remaining";
-                    testa = testa - 1;
-                    progressBar1.Value = progress + 5;
-                    progress = progress + 5;
-                    if (backgroundWorker1.CancellationPending){
-                        break;
+                    testa = testa - 1;                  //subtracts 1 from the backup time
+                    progressBar1.Value = progress + 5;  //adds a value of 5 to the progress bar
+                    progress = progress + 5;            //updates variable so it adds 5 MORE every loop cycle
+                    if (backgroundWorker1.CancellationPending)
+                    {
+                        break;                          //this stops the backup timer when the cancel button is hit
+                    }
+                    Thread.Sleep(10000);
+                    if (backgroundWorker1.CancellationPending)
+                    {
+                        break;                         //checks every 10 seconds for a cancelation
                     }
                     Thread.Sleep(10000);
                     if (backgroundWorker1.CancellationPending)
@@ -121,24 +124,23 @@ namespace Backup
                         break;
                     }
                     Thread.Sleep(10000);
-                    if (backgroundWorker1.CancellationPending)
-                    {
-                        break;
-                    }
-                    Thread.Sleep(10000);
-                    
-
                 }
                 if (backgroundWorker1.CancellationPending)
                 {
                     break;
                 }
-                var date = string.Format("{0:MM-dd-yyyy@hh-mm tt}", DateTime.Now);
-                System.IO.Directory.CreateDirectory(date);
+                
+                var date = string.Format("{0:MM-dd-yyyy@hh-mm tt}", DateTime.Now);  //sets variable 'date' to 2digit month:Day:4 digit year(20xx)@hours-minutes AM/PM
+                System.IO.Directory.CreateDirectory(date);                          //creates directory
+                
+                 if (System.IO.File.Exists("save-all.vbs"))                         //checks if the 'save-all.vbs' file is found, and if it is, it calls it and waits 5000 ms (5 seconds)
+            {
                 System.Diagnostics.Process.Start(@"save-all.vbs");
-                Thread.Sleep(500);
+                Thread.Sleep(5000);
+            }
 
-                FileSystem.CopyDirectory(drivepath, date + "\\");
+
+                FileSystem.CopyDirectory(drivepath, date + "\\");                  //copy the world directory contents to the backup dir
             }
 
             backgroundWorker1.CancelAsync();
@@ -152,7 +154,7 @@ namespace Backup
 
         private void button1_Click(object sender, EventArgs e)
         {
-            backgroundWorker1.CancelAsync();
+            backgroundWorker1.CancelAsync();                                     //makes the break statement work, by sending the backgroundWorker thread a cancelation request
 
         }
 
