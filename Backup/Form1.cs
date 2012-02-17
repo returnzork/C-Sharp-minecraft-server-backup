@@ -95,7 +95,7 @@ namespace Backup
 
                     if (backgroundWorker1.CancellationPending)
                     {
-                        this.Invoke(new MethodInvoker(delegate { progressBar1.Value = 0; }));
+                        this.Invoke(new MethodInvoker(delegate { progressBar1.Value = 0; }));  //sets the progress bar to 0 when canceled
                         break;                          //this stops the backup timer when the cancel button is hit
                     }
                     Thread.Sleep(10000);
