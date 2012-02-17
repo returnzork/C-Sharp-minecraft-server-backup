@@ -20,11 +20,6 @@ namespace Backup
             InitializeComponent();
         }
 
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-            
-        }
-
         private void Form1_Load(object sender, EventArgs e)
         {
 
@@ -35,11 +30,6 @@ namespace Backup
                 textBox2.Text = objReader.ReadToEnd();
                 objReader.Close();
             }
-
-        }
-
-        private void progressBar1_Click(object sender, EventArgs e)
-        {
 
         }
 
@@ -70,10 +60,13 @@ namespace Backup
 
             var drivepath = textBox2.Text;
 
-            var date1 = string.Format("{0:MM-dd-yyyy@hh-mm tt}", DateTime.Now);
+            var date1 = string.Format("{0:MM-dd-yyyy@hh-mm-ss tt}", DateTime.Now);
             System.IO.Directory.CreateDirectory(date1);                      //creates the directory
 
-            FileSystem.CopyDirectory(drivepath, date1 + "\\");               //copy the directory to the newly created one
+            Thread.Sleep(50);
+
+
+            //FileSystem.CopyDirectory(drivepath, date1 + "\\");               //copy the directory to the newly created one
 
 
             int loop = 6;
@@ -88,58 +81,71 @@ namespace Backup
                 int progress = 0;
 
 
+
                 while (testa > 0)                     //loop code for timer
                 {
-                    textBox1.Text = testa + " minutes remaining";
+
+
+                    this.Invoke(new MethodInvoker(delegate { textBox1.Text = testa + " minutes remaining"; }));
                     testa = testa - 1;                  //subtracts 1 from the backup time
-                    progressBar1.Value = progress + 5;  //adds a value of 5 to the progress bar
+                    this.Invoke(new MethodInvoker(delegate { progressBar1.Value = progress + 5; }));  //adds a value of 5 to the progress bar
+
                     progress = progress + 5;            //updates variable so it adds 5 MORE every loop cycle
+
+
                     if (backgroundWorker1.CancellationPending)
                     {
+                        this.Invoke(new MethodInvoker(delegate { progressBar1.Value = 0; }));
                         break;                          //this stops the backup timer when the cancel button is hit
                     }
-                    Thread.Sleep(10000);
+                    Thread.Sleep(100/*00*/);
                     if (backgroundWorker1.CancellationPending)
                     {
+                        this.Invoke(new MethodInvoker(delegate { progressBar1.Value = 0; }));
                         break;                         //checks every 10 seconds for a cancelation
+                        
                     }
-                    Thread.Sleep(10000);
+                    Thread.Sleep(100/*00*/);
                     if (backgroundWorker1.CancellationPending)
                     {
+                        this.Invoke(new MethodInvoker(delegate { progressBar1.Value = 0; }));
                         break;
                     }
-                    Thread.Sleep(10000);
+                    Thread.Sleep(100/*00*/);
                     if (backgroundWorker1.CancellationPending)
                     {
+                        this.Invoke(new MethodInvoker(delegate { progressBar1.Value = 0; }));
                         break;
                     }
-                    Thread.Sleep(10000);
+                    Thread.Sleep(100/*00*/);
                     if (backgroundWorker1.CancellationPending)
                     {
+                        this.Invoke(new MethodInvoker(delegate { progressBar1.Value = 0; }));
                         break;
                     }
-                    Thread.Sleep(10000);
+                    Thread.Sleep(100/*00*/);
                     if (backgroundWorker1.CancellationPending)
                     {
+                        this.Invoke(new MethodInvoker(delegate { progressBar1.Value = 0; }));
                         break;
                     }
-                    Thread.Sleep(10000);
+                    Thread.Sleep(100/*00*/);
                 }
                 if (backgroundWorker1.CancellationPending)
                 {
+                    this.Invoke(new MethodInvoker(delegate { progressBar1.Value = 0; }));
                     break;
                 }
                 
-                var date = string.Format("{0:MM-dd-yyyy@hh-mm tt}", DateTime.Now);  //sets variable 'date' to 2digit month:Day:4 digit year(20xx)@hours-minutes AM/PM
-                System.IO.Directory.CreateDirectory(date);                          //creates directory
+                var date = string.Format("{0:MM-dd-yyyy@hh-mm-ss tt}", DateTime.Now);    //sets variable 'date' to Month(xx):Day:4 digit year(20xx)@hours-minutes-seconds AM/PM
+                System.IO.Directory.CreateDirectory(date);                               //creates directory
                 
-                 if (System.IO.File.Exists("save-all.vbs"))                         //checks if the 'save-all.vbs' file is found, and if it is, it calls it and waits 5000 ms (5 seconds)
+                 if (System.IO.File.Exists("save-all.vbs"))                              //checks if the 'save-all.vbs' file is found, and if it is, it calls it and waits 5000 ms (5 seconds)
             {
                 System.Diagnostics.Process.Start(@"save-all.vbs");
                 Thread.Sleep(5000);
             }
-
-
+                Thread.Sleep(50);
                 FileSystem.CopyDirectory(drivepath, date + "\\");                  //copy the world directory contents to the backup dir
             }
 
@@ -147,17 +153,15 @@ namespace Backup
 
         }
 
-        private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
-        {
-
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
             backgroundWorker1.CancelAsync();                                     //makes the break statement work, by sending the backgroundWorker thread a cancelation request
-
         }
 
-       
+        private void progressBar1_Click(object sender, EventArgs e)
+        {
+
+        }
+      
     }
 }

@@ -16,3 +16,8 @@ C:\Users\Kevin\C-Sharp-minecraft-server-backup\Backup\obj\x86\Debug\Backup.Form1
 C:\Users\Kevin\C-Sharp-minecraft-server-backup\Backup\obj\x86\Debug\Backup.Properties.Resources.resources
 C:\Users\Kevin\C-Sharp-minecraft-server-backup\Backup\obj\x86\Debug\GenerateResource.read.1.tlog
 C:\Users\Kevin\C-Sharp-minecraft-server-backup\Backup\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\Kevin\C-Sharp-minecraft-server-backup\Backup\bin\Debug\Backup.exe.manifest
+C:\Users\Kevin\C-Sharp-minecraft-server-backup\Backup\bin\Debug\Backup.application
+C:\Users\Kevin\C-Sharp-minecraft-server-backup\Backup\obj\x86\Debug\Backup.TrustInfo.xml
+C:\Users\Kevin\C-Sharp-minecraft-server-backup\Backup\obj\x86\Debug\Backup.exe.manifest
+C:\Users\Kevin\C-Sharp-minecraft-server-backup\Backup\obj\x86\Debug\Backup.application
