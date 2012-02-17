@@ -10,6 +10,7 @@ using System.Threading;
 using System.Diagnostics;
 using System.IO;
 using Microsoft.VisualBasic.FileIO;
+using Ionic.Zip;
 
 namespace Backup
 {
@@ -65,8 +66,22 @@ namespace Backup
 
             Thread.Sleep(50);
 
+            this.Invoke(new MethodInvoker(delegate { progressBar1.Value = 1; }));
 
-            //FileSystem.CopyDirectory(drivepath, date1 + "\\");               //copy the directory to the newly created one
+            FileSystem.CopyDirectory(drivepath, date1 + "\\");               //copy the directory to the newly created one
+
+            Thread.Sleep(500);
+
+
+
+            using (ZipFile zip = new ZipFile())
+            {
+                string[] files = Directory.GetFiles(@date1);   // add all those files to the ProjectX folder in the zip file
+                zip.AddFiles(files);
+                zip.Comment = "This zip was created at " + System.DateTime.Now.ToString("G");
+                zip.Save(date1 + ".zip");
+            }
+
 
 
             int loop = 6;
@@ -98,38 +113,38 @@ namespace Backup
                         this.Invoke(new MethodInvoker(delegate { progressBar1.Value = 0; }));  //sets the progress bar to 0 when canceled
                         break;                          //this stops the backup timer when the cancel button is hit
                     }
-                    Thread.Sleep(10000);
+                    Thread.Sleep(10/*000*/);
                     if (backgroundWorker1.CancellationPending)
                     {
                         this.Invoke(new MethodInvoker(delegate { progressBar1.Value = 0; }));
                         break;                         //checks every 10 seconds for a cancelation
                         
                     }
-                    Thread.Sleep(10000);
+                    Thread.Sleep(10/*000*/);
                     if (backgroundWorker1.CancellationPending)
                     {
                         this.Invoke(new MethodInvoker(delegate { progressBar1.Value = 0; }));
                         break;
                     }
-                    Thread.Sleep(10000);
+                    Thread.Sleep(10/*000*/);
                     if (backgroundWorker1.CancellationPending)
                     {
                         this.Invoke(new MethodInvoker(delegate { progressBar1.Value = 0; }));
                         break;
                     }
-                    Thread.Sleep(10000);
+                    Thread.Sleep(10/*000*/);
                     if (backgroundWorker1.CancellationPending)
                     {
                         this.Invoke(new MethodInvoker(delegate { progressBar1.Value = 0; }));
                         break;
                     }
-                    Thread.Sleep(10000);
+                    Thread.Sleep(10/*000*/);
                     if (backgroundWorker1.CancellationPending)
                     {
                         this.Invoke(new MethodInvoker(delegate { progressBar1.Value = 0; }));
                         break;
                     }
-                    Thread.Sleep(10000);
+                    Thread.Sleep(10/*000*/);
                 }
                 if (backgroundWorker1.CancellationPending)
                 {
@@ -147,6 +162,24 @@ namespace Backup
             }
                 Thread.Sleep(50);
                 FileSystem.CopyDirectory(drivepath, date + "\\");                  //copy the world directory contents to the backup dir
+                Thread.Sleep(50);
+
+
+
+                using (ZipFile zip = new ZipFile())
+                {
+                    string[] files = Directory.GetFiles(@date);   // add all those files to the ProjectX folder in the zip file
+                    string[] directories = Directory.GetDirectories(@date);
+                    zip.AddFiles(files);
+
+                    zip.AddDirectory("Players");
+
+                    zip.Comment = "This zip was created at " + System.DateTime.Now.ToString("G");
+                    zip.Save(date + ".zip");
+                }
+
+
+
             }
 
             backgroundWorker1.CancelAsync();

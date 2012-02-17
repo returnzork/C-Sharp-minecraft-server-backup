@@ -21,3 +21,4 @@ C:\Users\Kevin\C-Sharp-minecraft-server-backup\Backup\bin\Debug\Backup.applicati
 C:\Users\Kevin\C-Sharp-minecraft-server-backup\Backup\obj\x86\Debug\Backup.TrustInfo.xml
 C:\Users\Kevin\C-Sharp-minecraft-server-backup\Backup\obj\x86\Debug\Backup.exe.manifest
 C:\Users\Kevin\C-Sharp-minecraft-server-backup\Backup\obj\x86\Debug\Backup.application
+C:\Users\Kevin\C-Sharp-minecraft-server-backup\Backup\bin\Debug\Ionic.Zip.dll
