@@ -98,38 +98,38 @@ namespace Backup
                         this.Invoke(new MethodInvoker(delegate { progressBar1.Value = 0; }));
                         break;                          //this stops the backup timer when the cancel button is hit
                     }
-                    Thread.Sleep(100/*00*/);
+                    Thread.Sleep(10000);
                     if (backgroundWorker1.CancellationPending)
                     {
                         this.Invoke(new MethodInvoker(delegate { progressBar1.Value = 0; }));
                         break;                         //checks every 10 seconds for a cancelation
                         
                     }
-                    Thread.Sleep(100/*00*/);
+                    Thread.Sleep(10000);
                     if (backgroundWorker1.CancellationPending)
                     {
                         this.Invoke(new MethodInvoker(delegate { progressBar1.Value = 0; }));
                         break;
                     }
-                    Thread.Sleep(100/*00*/);
+                    Thread.Sleep(10000);
                     if (backgroundWorker1.CancellationPending)
                     {
                         this.Invoke(new MethodInvoker(delegate { progressBar1.Value = 0; }));
                         break;
                     }
-                    Thread.Sleep(100/*00*/);
+                    Thread.Sleep(10000);
                     if (backgroundWorker1.CancellationPending)
                     {
                         this.Invoke(new MethodInvoker(delegate { progressBar1.Value = 0; }));
                         break;
                     }
-                    Thread.Sleep(100/*00*/);
+                    Thread.Sleep(10000);
                     if (backgroundWorker1.CancellationPending)
                     {
                         this.Invoke(new MethodInvoker(delegate { progressBar1.Value = 0; }));
                         break;
                     }
-                    Thread.Sleep(100/*00*/);
+                    Thread.Sleep(10000);
                 }
                 if (backgroundWorker1.CancellationPending)
                 {
