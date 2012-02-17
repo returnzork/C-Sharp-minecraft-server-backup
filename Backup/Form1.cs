@@ -1,4 +1,12 @@
-﻿using System;
+﻿/*Version 1.5
+ * 
+ * github.com/returnzork
+ * 
+ * http://minecraftcloud.x10.mx/
+ * 
+*/
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -113,38 +121,38 @@ namespace Backup
                         this.Invoke(new MethodInvoker(delegate { progressBar1.Value = 0; }));  //sets the progress bar to 0 when canceled
                         break;                          //this stops the backup timer when the cancel button is hit
                     }
-                    Thread.Sleep(10/*000*/);
+                    Thread.Sleep(10000);
                     if (backgroundWorker1.CancellationPending)
                     {
                         this.Invoke(new MethodInvoker(delegate { progressBar1.Value = 0; }));
                         break;                         //checks every 10 seconds for a cancelation
                         
                     }
-                    Thread.Sleep(10/*000*/);
+                    Thread.Sleep(10000);
                     if (backgroundWorker1.CancellationPending)
                     {
                         this.Invoke(new MethodInvoker(delegate { progressBar1.Value = 0; }));
                         break;
                     }
-                    Thread.Sleep(10/*000*/);
+                    Thread.Sleep(10000);
                     if (backgroundWorker1.CancellationPending)
                     {
                         this.Invoke(new MethodInvoker(delegate { progressBar1.Value = 0; }));
                         break;
                     }
-                    Thread.Sleep(10/*000*/);
+                    Thread.Sleep(10000);
                     if (backgroundWorker1.CancellationPending)
                     {
                         this.Invoke(new MethodInvoker(delegate { progressBar1.Value = 0; }));
                         break;
                     }
-                    Thread.Sleep(10/*000*/);
+                    Thread.Sleep(10000);
                     if (backgroundWorker1.CancellationPending)
                     {
                         this.Invoke(new MethodInvoker(delegate { progressBar1.Value = 0; }));
                         break;
                     }
-                    Thread.Sleep(10/*000*/);
+                    Thread.Sleep(10000);
                 }
                 if (backgroundWorker1.CancellationPending)
                 {
@@ -172,7 +180,9 @@ namespace Backup
                     string[] directories = Directory.GetDirectories(@date);
                     zip.AddFiles(files);
 
-                    zip.AddDirectory("Players");
+                    zip.AddDirectory(@date + "\\players");
+                    zip.AddDirectory(@date + "\\data");
+                    zip.AddDirectory(@date + "\\region");
 
                     zip.Comment = "This zip was created at " + System.DateTime.Now.ToString("G");
                     zip.Save(date + ".zip");
