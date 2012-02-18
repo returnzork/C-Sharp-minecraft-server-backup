@@ -91,7 +91,7 @@ namespace Backup
                
 
 
-                zip.AddDirectory(date1 + "\\Players");
+                zip.AddDirectory(date1 + "\\Players");                     
                 zip.AddDirectory(@date1 + "\\data");
                 zip.AddDirectory(@date1 + "\\region");
 
