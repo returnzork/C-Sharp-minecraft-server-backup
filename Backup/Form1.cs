@@ -1,8 +1,9 @@
-﻿/*Version 1.5.3.1
+﻿
+/*Version 1.6.1
  * 
- * more compression stuff
+ * compression works!
  * 
- * github.com/returnzork
+ * http://www.github.com/returnzork
  * 
  * http://minecraftcloud.x10.mx/
  * 
@@ -91,7 +92,7 @@ namespace Backup
 
                 zip.ParallelDeflateThreshold = -1;               //fixes freezing when copying the larger 'region' folder
 
-                //zip.AddFiles(@date1+"\\players\\");
+
                 zip.AddDirectory(@date1 + "\\Players\\", "Players\\");
                 zip.AddDirectory(@date1 + "\\data\\", "data\\");
                 zip.AddDirectory(@date1 + "\\region\\", "region\\");
@@ -187,10 +188,12 @@ namespace Backup
                     zip.AddFiles(files);
 
 
+                    zip.ParallelDeflateThreshold = -1;
 
-                    zip.AddDirectory(@date + "\\Players");
-                    zip.AddDirectory(@date + "\\data");
-                    zip.AddDirectory(@date + "\\region");
+
+                    zip.AddDirectory(@date + "\\Players", "\\Players");
+                    zip.AddDirectory(@date + "\\data", "\\data");
+                    zip.AddDirectory(@date + "\\region", "\\region");
 
                     zip.Comment = "This zip was created at " + System.DateTime.Now.ToString("G");
                     zip.Save(date + ".zip");
