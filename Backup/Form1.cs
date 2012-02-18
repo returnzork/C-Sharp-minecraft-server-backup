@@ -80,22 +80,23 @@ namespace Backup
 
             FileSystem.CopyDirectory(drivepath, date1 + "\\");               //copy the directory to the newly created one
 
-            Thread.Sleep(500);
+            Thread.Sleep(250);
 
 
 
-            using (ZipFile zip = new ZipFile())
+            using (ZipFile zip = new  ZipFile())
             {
                 string[] files = Directory.GetFiles(@date1);
-                zip.AddFiles(files);
-               
+                zip.AddFiles(files, "\\");
 
+                zip.ParallelDeflateThreshold = -1;               //fixes freezing when copying the larger 'region' folder
 
-                zip.AddDirectory(date1 + "\\Players");                     
-                zip.AddDirectory(@date1 + "\\data");
-                zip.AddDirectory(@date1 + "\\region");
+                //zip.AddFiles(@date1+"\\players\\");
+                zip.AddDirectory(@date1 + "\\Players\\", "Players\\");
+                zip.AddDirectory(@date1 + "\\data\\", "data\\");
+                zip.AddDirectory(@date1 + "\\region\\", "region\\");
 
-                zip.Comment = "This zip was created at " + System.DateTime.Now.ToString("G");
+                //zip.Comment = "This zip was created at " + System.DateTime.Now.ToString("G");
                 zip.Save(date1 + ".zip");
             }
 
