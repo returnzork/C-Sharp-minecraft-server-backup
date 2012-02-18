@@ -86,10 +86,12 @@ namespace Backup
 
             using (ZipFile zip = new ZipFile())
             {
-                string[] files = Directory.GetFiles(@date1);   // add all those files to the ProjectX folder in the zip file
+                string[] files = Directory.GetFiles(@date1);
                 zip.AddFiles(files);
+               
 
-                zip.AddDirectory(@date1 + "\\players");
+
+                zip.AddDirectory(date1 + "\\Players");
                 zip.AddDirectory(@date1 + "\\data");
                 zip.AddDirectory(@date1 + "\\region");
 
@@ -104,12 +106,9 @@ namespace Backup
             while (loop >= 5)
             {
                 
-                //string test;                        //old legacy way that
-                //test = "20";                        //will work if the new way doesn't.
-                //int testa = Convert.ToInt32(test);  
-                int testa = 20;                       //new initialize code, will test later
-                int progress = 0;
 
+                int testa = 20;
+                int progress = 0;
 
 
                 while (testa > 0)                     //loop code for timer
@@ -183,11 +182,12 @@ namespace Backup
 
                 using (ZipFile zip = new ZipFile())
                 {
-                    string[] files = Directory.GetFiles(@date);   // add all those files to the ProjectX folder in the zip file
-                    string[] directories = Directory.GetDirectories(@date);
+                    string[] files = Directory.GetFiles(@date1);
                     zip.AddFiles(files);
 
-                    zip.AddDirectory(@date + "\\players");
+
+
+                    zip.AddDirectory(@date + "\\Players");
                     zip.AddDirectory(@date + "\\data");
                     zip.AddDirectory(@date + "\\region");
 
