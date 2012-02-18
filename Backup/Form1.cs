@@ -1,6 +1,6 @@
-﻿/*Version 1.5.1
+﻿/*Version 1.5.3.1
  * 
- * fixed compression to the on launch copy
+ * more compression stuff
  * 
  * github.com/returnzork
  * 
