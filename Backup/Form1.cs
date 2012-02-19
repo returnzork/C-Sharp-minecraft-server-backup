@@ -1,7 +1,7 @@
 ﻿
-/*Version 1.6.1
+/*Version 1.7
  * 
- * compression works!
+ * Support for backup to any location!
  * 
  * http://www.github.com/returnzork
  * 
@@ -35,14 +35,33 @@ namespace Backup
         private void Form1_Load(object sender, EventArgs e)
         {
 
-            if (System.IO.File.Exists("last.txt"))
+            if (System.IO.File.Exists("last1.txt"))
             {
                 System.IO.StreamReader objReader;
-                objReader = new System.IO.StreamReader("last.txt");
+                objReader = new System.IO.StreamReader("last1.txt");
                 textBox2.Text = objReader.ReadToEnd();
                 objReader.Close();
             }
+            else
+            {
+                if (System.IO.File.Exists("last.txt"))
+                {
+                    System.IO.StreamReader objReader;
+                    objReader = new System.IO.StreamReader("last.txt");
+                    textBox2.Text = objReader.ReadToEnd();
+                    objReader.Close();
+                    Thread.Sleep(50);
+                    System.IO.File.Move("last.txt", "last1.txt");
 
+                }
+            }
+            if (System.IO.File.Exists("last2.txt"))
+            {
+                System.IO.StreamReader objReader;
+                objReader = new System.IO.StreamReader("last2.txt");
+                CopyTo.Text = objReader.ReadToEnd();
+                objReader.Close();
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -57,8 +76,9 @@ namespace Backup
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
+            var Copy2 = CopyTo.Text;
 
-            Thread.Sleep(50);
+            Thread.Sleep(100);
 
             if (System.IO.File.Exists("save-all.vbs"))
             {
@@ -68,18 +88,22 @@ namespace Backup
                 Thread.Sleep(5000);
             }
 
-            File.WriteAllText("last.txt", textBox2.Text);                     //writes the directory to save to a file (names last.txt)
+            File.WriteAllText("last1.txt", textBox2.Text);                     //writes the directory to save to a file (names last.txt)
+            Thread.Sleep(20);
+            File.WriteAllText("last2.txt", CopyTo.Text);
+
 
             var drivepath = textBox2.Text;
 
             var date1 = string.Format("{0:MM-dd-yyyy@hh-mm-ss tt}", DateTime.Now);
-            System.IO.Directory.CreateDirectory(date1);                      //creates the directory
+            System.IO.Directory.CreateDirectory(Copy2 + date1);                      //creates the directory
 
             Thread.Sleep(50);
+            //
 
             this.Invoke(new MethodInvoker(delegate { progressBar1.Value = 1; }));
 
-            FileSystem.CopyDirectory(drivepath, date1 + "\\");               //copy the directory to the newly created one
+            FileSystem.CopyDirectory(drivepath, Copy2 + date1 + "\\");               //copy the directory to the newly created one
 
             Thread.Sleep(250);
 
@@ -87,18 +111,18 @@ namespace Backup
 
             using (ZipFile zip = new  ZipFile())
             {
-                string[] files = Directory.GetFiles(@date1);
+                string[] files = Directory.GetFiles(@Copy2 + date1);
                 zip.AddFiles(files, "\\");
 
                 zip.ParallelDeflateThreshold = -1;               //fixes freezing when copying the larger 'region' folder
 
 
-                zip.AddDirectory(@date1 + "\\Players\\", "Players\\");
-                zip.AddDirectory(@date1 + "\\data\\", "data\\");
-                zip.AddDirectory(@date1 + "\\region\\", "region\\");
+                zip.AddDirectory(@Copy2 + date1 + "\\Players\\", "Players\\");
+                zip.AddDirectory(@Copy2 + date1 + "\\data\\", "data\\");
+                zip.AddDirectory(@Copy2 + date1 + "\\region\\", "region\\");
 
                 //zip.Comment = "This zip was created at " + System.DateTime.Now.ToString("G");
-                zip.Save(date1 + ".zip");
+                zip.Save(Copy2 + date1 + ".zip");
             }
 
 
@@ -161,15 +185,23 @@ namespace Backup
                         break;
                     }
                     Thread.Sleep(10000);
+                    if (backgroundWorker1.CancellationPending)
+                    {
+                        this.Invoke(new MethodInvoker(delegate { progressBar1.Value = 0; }));
+                        break;
+                    }
                 }
+
+
                 if (backgroundWorker1.CancellationPending)
                 {
                     this.Invoke(new MethodInvoker(delegate { progressBar1.Value = 0; }));
                     break;
                 }
                 
+
                 var date = string.Format("{0:MM-dd-yyyy@hh-mm-ss tt}", DateTime.Now);    //sets variable 'date' to Month(xx):Day:4 digit year(20xx)@hours-minutes-seconds AM/PM
-                System.IO.Directory.CreateDirectory(date);                               //creates directory
+                System.IO.Directory.CreateDirectory(Copy2 + date + "\\");                               //creates directory
                 
                  if (System.IO.File.Exists("save-all.vbs"))                              //checks if the 'save-all.vbs' file is found, and if it is, it calls it and waits 5000 ms (5 seconds)
             {
@@ -177,26 +209,26 @@ namespace Backup
                 Thread.Sleep(5000);
             }
                 Thread.Sleep(50);
-                FileSystem.CopyDirectory(drivepath, date + "\\");                  //copy the world directory contents to the backup dir
+                FileSystem.CopyDirectory(drivepath, @Copy2 + date + "\\");                  //copy the world directory contents to the backup dir
                 Thread.Sleep(50);
 
 
 
                 using (ZipFile zip = new ZipFile())
                 {
-                    string[] files = Directory.GetFiles(@date1);
-                    zip.AddFiles(files);
+                    string[] files = Directory.GetFiles(@Copy2 + date);
+                    zip.AddFiles(files, "\\");
 
 
                     zip.ParallelDeflateThreshold = -1;
 
 
-                    zip.AddDirectory(@date + "\\Players", "\\Players");
-                    zip.AddDirectory(@date + "\\data", "\\data");
-                    zip.AddDirectory(@date + "\\region", "\\region");
+                    zip.AddDirectory(@Copy2 + date + "\\Players", "\\Players");
+                    zip.AddDirectory(@Copy2 + date + "\\data", "\\data");
+                    zip.AddDirectory(@Copy2 + date + "\\region", "\\region");
 
                     zip.Comment = "This zip was created at " + System.DateTime.Now.ToString("G");
-                    zip.Save(date + ".zip");
+                    zip.Save(Copy2 + date + ".zip");
                 }
 
 
@@ -215,6 +247,16 @@ namespace Backup
         private void progressBar1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+            
         }
       
     }
