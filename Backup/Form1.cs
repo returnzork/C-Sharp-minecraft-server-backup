@@ -1,5 +1,5 @@
 ﻿
-/*Version 1.9
+/*Version 1.9.0
  * 
  * new error handling, + checkboxes for options
  * 
