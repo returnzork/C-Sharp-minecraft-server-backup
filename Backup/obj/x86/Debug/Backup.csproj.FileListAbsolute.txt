@@ -2,6 +2,7 @@ C:\Users\Kevin\C-Sharp-minecraft-server-backup\Backup\bin\Debug\Backup.exe.manif
 C:\Users\Kevin\C-Sharp-minecraft-server-backup\Backup\bin\Debug\Backup.application
 C:\Users\Kevin\C-Sharp-minecraft-server-backup\Backup\bin\Debug\Backup.exe
 C:\Users\Kevin\C-Sharp-minecraft-server-backup\Backup\bin\Debug\Backup.pdb
+C:\Users\Kevin\C-Sharp-minecraft-server-backup\Backup\bin\Debug\AppUpdater.dll
 C:\Users\Kevin\C-Sharp-minecraft-server-backup\Backup\bin\Debug\Ionic.Zip.dll
 C:\Users\Kevin\C-Sharp-minecraft-server-backup\Backup\obj\x86\Debug\ResolveAssemblyReference.cache
 C:\Users\Kevin\C-Sharp-minecraft-server-backup\Backup\obj\x86\Debug\Backup.Form1.resources
@@ -13,4 +14,3 @@ C:\Users\Kevin\C-Sharp-minecraft-server-backup\Backup\obj\x86\Debug\Backup.exe.m
 C:\Users\Kevin\C-Sharp-minecraft-server-backup\Backup\obj\x86\Debug\Backup.application
 C:\Users\Kevin\C-Sharp-minecraft-server-backup\Backup\obj\x86\Debug\Backup.exe
 C:\Users\Kevin\C-Sharp-minecraft-server-backup\Backup\obj\x86\Debug\Backup.pdb
-C:\Users\Kevin\C-Sharp-minecraft-server-backup\Backup\bin\Debug\AppUpdater.dll

@@ -59,7 +59,7 @@
             // 
             this.progressBar1.Location = new System.Drawing.Point(64, 244);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(238, 39);
+            this.progressBar1.Size = new System.Drawing.Size(321, 39);
             this.progressBar1.TabIndex = 2;
             this.progressBar1.Click += new System.EventHandler(this.progressBar1_Click);
             // 
@@ -67,12 +67,12 @@
             // 
             this.Details.Location = new System.Drawing.Point(30, 171);
             this.Details.Name = "Details";
-            this.Details.Size = new System.Drawing.Size(355, 20);
+            this.Details.Size = new System.Drawing.Size(400, 20);
             this.Details.TabIndex = 4;
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(30, 197);
+            this.button3.Location = new System.Drawing.Point(64, 197);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(87, 20);
             this.button3.TabIndex = 5;
@@ -114,7 +114,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(240, 197);
+            this.button1.Location = new System.Drawing.Point(298, 197);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(87, 20);
             this.button1.TabIndex = 10;
@@ -144,7 +144,7 @@
             // 
             this.timebetween.Location = new System.Drawing.Point(281, 55);
             this.timebetween.Name = "timebetween";
-            this.timebetween.Size = new System.Drawing.Size(149, 20);
+            this.timebetween.Size = new System.Drawing.Size(170, 20);
             this.timebetween.TabIndex = 14;
             // 
             // Between
@@ -197,7 +197,7 @@
             this.checkForUpdatesToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(451, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(467, 24);
             this.menuStrip1.TabIndex = 13;
             this.menuStrip1.Text = "menuStrip1";
             this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
@@ -217,10 +217,11 @@
             this.SaveTime.AutoSize = true;
             this.SaveTime.Location = new System.Drawing.Point(272, 127);
             this.SaveTime.Name = "SaveTime";
-            this.SaveTime.Size = new System.Drawing.Size(167, 17);
+            this.SaveTime.Size = new System.Drawing.Size(195, 17);
             this.SaveTime.TabIndex = 18;
-            this.SaveTime.Text = "Save time between backups?";
+            this.SaveTime.Text = "Save time between backups to file?";
             this.SaveTime.UseVisualStyleBackColor = true;
+            this.SaveTime.CheckedChanged += new System.EventHandler(this.SaveTime_CheckedChanged);
             // 
             // delete
             // 
@@ -236,9 +237,9 @@
             // errors
             // 
             this.errors.HideSelection = false;
-            this.errors.Location = new System.Drawing.Point(64, 326);
+            this.errors.Location = new System.Drawing.Point(12, 326);
             this.errors.Name = "errors";
-            this.errors.Size = new System.Drawing.Size(238, 20);
+            this.errors.Size = new System.Drawing.Size(418, 20);
             this.errors.TabIndex = 20;
             // 
             // Form1
@@ -246,7 +247,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.ClientSize = new System.Drawing.Size(451, 384);
+            this.ClientSize = new System.Drawing.Size(467, 384);
             this.Controls.Add(this.errors);
             this.Controls.Add(this.delete);
             this.Controls.Add(this.SaveTime);
