@@ -8,3 +8,8 @@
 *.cache
 *.xml
 *.manifest
+bin/
+debug/
+release/
+Backup/bin/Debug/
+Backup/obj/x86/Debug/
