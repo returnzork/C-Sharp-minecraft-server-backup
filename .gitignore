@@ -1,1 +1,3 @@
-/Backup/bin/Debug/*.*
+*.exe
+*.txt
+#/Backup/bin/Debug/*.*
