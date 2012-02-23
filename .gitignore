@@ -5,3 +5,6 @@
 *.out
 *.exe
 *.txt
+*.cache
+*.xml
+*.manifest
