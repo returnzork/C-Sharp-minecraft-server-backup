@@ -1,2 +1,6 @@
-Backup/bin/*
-Backup/obj/*
+[core]
+excludesfile = +info/exclude
+
+
+[local "public_viewing"]
+excludesfile = +info/exclude_from_public_viewing
