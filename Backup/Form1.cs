@@ -37,6 +37,7 @@ namespace Backup
         private void Form1_Load(object sender, EventArgs e)
         {
             errors.Visible = false;
+            errortext.Visible = false;
 
             if (System.IO.File.Exists("last1.txt"))
             {
@@ -143,7 +144,7 @@ namespace Backup
                     string[] files = Directory.GetFiles(@Copy2 + date1);
                     zip.AddFiles(files, "\\");
 
-                    zip.ParallelDeflateThreshold = -1;               //fixes freezing when copying the larger 'region' folder
+                    zip.ParallelDeflateThreshold = -1;               //fixes freezing when zipping the larger 'region' folder
 
 
                     zip.AddDirectory(@Copy2 + date1 + "\\Players\\", "Players\\");
@@ -195,7 +196,7 @@ namespace Backup
                         this.Invoke(new MethodInvoker(delegate { progressBar1.Value = 0; }));  //sets the progress bar to 0 when canceled
                         break;                          //this stops the backup timer when the cancel button is hit
                     }
-                    Thread.Sleep(10000);
+                    Thread.Sleep(10000);                            //waits 10 seconds, then checks if the cancel button has been pressed.
                     if (backgroundWorker1.CancellationPending)
                     {
                         this.Invoke(new MethodInvoker(delegate { progressBar1.Value = 0; }));
@@ -280,6 +281,10 @@ namespace Backup
                             }
                             else
                             {
+                                if (errortext.Visible != true)
+                                {
+                                    this.Invoke(new MethodInvoker(delegate { errortext.Visible = true; }));
+                                }
                                 if (errors.Visible != true)
                                 {
                                     this.Invoke(new MethodInvoker(delegate { errors.Visible = true; }));
@@ -330,7 +335,7 @@ namespace Backup
         private void checkForUpdatesToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-                        MessageBox.Show("Coming soon!");
+            MessageBox.Show("Coming soon!");
 
         }
 

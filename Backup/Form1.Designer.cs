@@ -51,6 +51,7 @@
             this.SaveTime = new System.Windows.Forms.CheckBox();
             this.delete = new System.Windows.Forms.CheckBox();
             this.errors = new System.Windows.Forms.TextBox();
+            this.errortext = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.appUpdater1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -238,9 +239,19 @@
             // 
             this.errors.HideSelection = false;
             this.errors.Location = new System.Drawing.Point(12, 326);
+            this.errors.Multiline = true;
             this.errors.Name = "errors";
             this.errors.Size = new System.Drawing.Size(418, 20);
             this.errors.TabIndex = 20;
+            // 
+            // errortext
+            // 
+            this.errortext.AutoSize = true;
+            this.errortext.Location = new System.Drawing.Point(15, 307);
+            this.errortext.Name = "errortext";
+            this.errortext.Size = new System.Drawing.Size(49, 13);
+            this.errortext.TabIndex = 21;
+            this.errortext.Text = "Error log:";
             // 
             // Form1
             // 
@@ -248,6 +259,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.ClientSize = new System.Drawing.Size(467, 384);
+            this.Controls.Add(this.errortext);
             this.Controls.Add(this.errors);
             this.Controls.Add(this.delete);
             this.Controls.Add(this.SaveTime);
@@ -300,6 +312,7 @@
         private System.Windows.Forms.CheckBox SaveTime;
         private System.Windows.Forms.CheckBox delete;
         private System.Windows.Forms.TextBox errors;
+        private System.Windows.Forms.Label errortext;
     }
 }
 
