@@ -42,7 +42,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.timebetween = new System.Windows.Forms.TextBox();
             this.Between = new System.Windows.Forms.Label();
-            this.appUpdater1 = new Microsoft.Samples.AppUpdater.AppUpdater(this.components);
+            //this.appUpdater1 = new Microsoft.Samples.AppUpdater.AppUpdater(this.components);
             this.Compression = new System.Windows.Forms.CheckBox();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.checkForUpdatesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -52,7 +52,6 @@
             this.delete = new System.Windows.Forms.CheckBox();
             this.errors = new System.Windows.Forms.TextBox();
             this.errortext = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.appUpdater1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -160,10 +159,10 @@
             // 
             // appUpdater1
             // 
-            this.appUpdater1.AutoFileLoad = true;
-            this.appUpdater1.ChangeDetectionMode = Microsoft.Samples.AppUpdater.ChangeDetectionModes.ServerManifestCheck;
-            this.appUpdater1.ShowDefaultUI = true;
-            this.appUpdater1.UpdateUrl = "http://192.168.11.140/version.xml";
+            //this.appUpdater1.AutoFileLoad = true;
+            //this.appUpdater1.ChangeDetectionMode = Microsoft.Samples.AppUpdater.ChangeDetectionModes.ServerManifestCheck;
+            //this.appUpdater1.ShowDefaultUI = true;
+            //this.appUpdater1.UpdateUrl = "http://192.168.11.140/version.xml";
             // 
             // Compression
             // 
@@ -281,7 +280,7 @@
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.appUpdater1)).EndInit();
+            //((System.ComponentModel.ISupportInitialize)(this.appUpdater1)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -303,7 +302,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox timebetween;
         private System.Windows.Forms.Label Between;
-        private Microsoft.Samples.AppUpdater.AppUpdater appUpdater1;
+        //private Microsoft.Samples.AppUpdater.AppUpdater appUpdater1;
         private System.Windows.Forms.CheckBox Compression;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem checkForUpdatesToolStripMenuItem;

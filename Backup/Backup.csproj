@@ -68,9 +68,6 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AppUpdater">
-      <HintPath>..\..\Desktop\AppUpdater.dll</HintPath>
-    </Reference>
     <Reference Include="Ionic.Zip">
       <HintPath>..\..\Desktop\DotNetZipLib-DevKit-v1.9\zip-v1.9\Release\Ionic.Zip.dll</HintPath>
     </Reference>

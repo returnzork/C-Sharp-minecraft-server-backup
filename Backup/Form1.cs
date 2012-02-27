@@ -22,7 +22,7 @@ using System.Diagnostics;
 using System.IO;
 using Microsoft.VisualBasic.FileIO;
 using Ionic.Zip;
-using System.Xml;
+//using System.Xml;
 using System.Net;
 
 namespace Backup
