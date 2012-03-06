@@ -145,11 +145,20 @@ namespace Backup
 
                     zip.ParallelDeflateThreshold = -1;               //fixes freezing when zipping the larger 'region' folder
 
+                    if (System.IO.Directory.Exists(@Copy2 + date1 + "\\Players\\")            //checks if the player folder exists, and if it does not, skips it. (Fixes freezing when these folders do not exist)
+                    {
+                        zip.AddDirectory(@Copy2 + date1 + "\\Players\\", "Players\\");
+                    }
+                    if (System.IO.Directory.Exists(@Copy2 + date1 + "\\data\\")
+                    {
+                        zip.AddDirectory(@Copy2 + date1 + "\\data\\", "data\\");
+                    }
+                    if (System.IO.Directory.Exists(@Copy2 + date1 + "\\region\\")
+                    {
+                        zip.AddDirectory(@Copy2 + date1 + "\\region\\", "region\\");
+                    }
 
-                    zip.AddDirectory(@Copy2 + date1 + "\\Players\\", "Players\\");
-                    zip.AddDirectory(@Copy2 + date1 + "\\data\\", "data\\");
-                    zip.AddDirectory(@Copy2 + date1 + "\\region\\", "region\\");
-                    zip.Save(Copy2 + date1 + ".zip");
+                    zip.Save(Copy2 + date1 + ".zip");                                      //Makes the zip folder//
                     if (delete.Checked)
                     {
                         Thread.Sleep(2000);
