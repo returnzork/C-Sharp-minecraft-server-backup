@@ -124,14 +124,14 @@ namespace Backup
             var drivepath = copyfrom.Text;
 
             var date1 = string.Format("{0:MM-dd-yyyy@hh-mm-ss tt}", DateTime.Now);
-            System.IO.Directory.CreateDirectory(Copy2 + date1);                      //creates the directory
+            System.IO.Directory.CreateDirectory(Copy2 + date1);                      //creates the directory to backup to
 
             Thread.Sleep(50);
             //
 
             this.Invoke(new MethodInvoker(delegate { progressBar1.Value = 1; }));
 
-            FileSystem.CopyDirectory(drivepath, Copy2 + date1 + "\\");               //copy the directory to the newly created one
+            FileSystem.CopyDirectory(drivepath, Copy2 + date1 + "\\");               //copy the directory to the newly created backup folder
 
             Thread.Sleep(250);
 
@@ -145,15 +145,15 @@ namespace Backup
 
                     zip.ParallelDeflateThreshold = -1;               //fixes freezing when zipping the larger 'region' folder
 
-                    if (System.IO.Directory.Exists(@Copy2 + date1 + "\\Players\\")            //checks if the player folder exists, and if it does not, skips it. (Fixes freezing when these folders do not exist)
+                    if (System.IO.Directory.Exists(@Copy2 + date1 + "\\Players\\")            //checks if the player folder exists, and if it does not, skips it. (Fixes freezing with compression when these folders do not exist)
                     {
                         zip.AddDirectory(@Copy2 + date1 + "\\Players\\", "Players\\");
                     }
-                    if (System.IO.Directory.Exists(@Copy2 + date1 + "\\data\\")
+                    if (System.IO.Directory.Exists(@Copy2 + date1 + "\\data\\")              //check for data folder
                     {
                         zip.AddDirectory(@Copy2 + date1 + "\\data\\", "data\\");
                     }
-                    if (System.IO.Directory.Exists(@Copy2 + date1 + "\\region\\")
+                    if (System.IO.Directory.Exists(@Copy2 + date1 + "\\region\\")             //check for region folder
                     {
                         zip.AddDirectory(@Copy2 + date1 + "\\region\\", "region\\");
                     }
