@@ -1,14 +1,4 @@
-﻿
-/*Version 1.9
- * 
- * new error handling, + checkboxes for options
- * 
- * http://github.com/returnzork/
- * 
- * http://minecraftcloud.x10.mx
- * 
- * 
-*/
+
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
